@@ -1,1 +1,10 @@
+@font-face {
+  font-family: JustMe;
+  src: url("/fonts/JustMeAgainDownHere-Regular.ttf");
+}
+
 @import "tailwindcss";
+
+@theme {
+  --font-justme: JustMe, "sans-serif";
+}
