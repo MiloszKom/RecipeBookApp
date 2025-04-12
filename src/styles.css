@@ -1,10 +1,30 @@
-@font-face {
-  font-family: JustMe;
-  src: url("/fonts/JustMeAgainDownHere-Regular.ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap");
 
 @import "tailwindcss";
 
 @theme {
-  --font-justme: JustMe, "sans-serif";
+  /* Fonts  */
+  --font-justme: Just Me Again Down Here, "sans-serif";
+  --font-nunito-sans: Nunito Sans, "sans-serif";
+  /* Colors  */
+  --color-custom-red: #d20c0c;
+  --color-custom-orange: #ff9900;
+  --color-custom-green: #04b100;
+  --color-custom-blue: #244fe8;
+  --color-custom-light-red: #fae7e7;
+  --color-custom-light-green: #e6f7e6;
+  --color-custom-light-orange: #fff5e6;
+  --color-custom-light-blue: #d3dcfb;
+  --color-custom-dark-green: #168914;
+  --color-custom-dark-oragne: #c65f00;
+}
+
+html {
+  font-family: "Nunito Sans", sans-serif;
+  user-select: none;
+}
+
+button {
+  cursor: pointer;
 }
