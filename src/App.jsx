@@ -1,11 +1,9 @@
-import Header from "./components/Header";
-import Home from "./home/Home";
-import RecipeDetail from "./detail/RecipeDetail";
+import Home from "./pages/Home";
+import RecipeDetail from "./pages/RecipeDetail";
 
 function App() {
   return (
     <div>
-      <Header />
       <Home />
       <RecipeDetail />
     </div>

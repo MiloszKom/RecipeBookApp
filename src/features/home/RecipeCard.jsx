@@ -1,6 +1,6 @@
 import React from "react";
-import RecipeTags from "../../common/RecipeTags";
-import RecipeMetadata from "../../common/RecipeMetadata";
+import RecipeTags from "../../components/RecipeTags";
+import RecipeMetadata from "../../components/RecipeMetadata";
 
 export default function RecpieCard() {
   return (
