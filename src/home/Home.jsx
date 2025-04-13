@@ -9,12 +9,13 @@ export default function Home() {
 
   return (
     <div
-      className="flex gap-10 flex-col mt-10 mx-[30px] mb-12 
-                 md:mt-[55px] md:mx-15 md:gap-15"
+      className="flex justify-self-center w-full gap-10 flex-col mt-10 px-[30px] mb-12 max-w-[500px]
+                 sm:max-w-[850px]
+                 lg:mt-[55px] lg:mx-15 lg:gap-15 lg:max-w-[1440px]"
     >
       <div
-        className="flex flex-col gap-10 md:flex-row 
-                   md:justify-between md:items-center"
+        className="flex flex-col gap-10 lg:flex-row 
+                   lg:justify-between lg:items-center"
       >
         <SearchBar />
         <ResponsiveDifficultyFilter
@@ -25,7 +26,8 @@ export default function Home() {
 
       <div
         className="grid grid-cols-1 gap-14 w-full
-                   md:grid-cols-3"
+                   sm:grid-cols-2 sm:gap-x-7
+                   lg:grid-cols-3"
       >
         <RecpieCard />
         <RecpieCard />

@@ -3,7 +3,7 @@ import React from "react";
 export default function DesktopDifficultyFilter({ difficulty, setDifficulty }) {
   return (
     <>
-      <div className="hidden md:flex gap-5">
+      <div className="hidden lg:flex gap-5">
         <button
           onClick={() => setDifficulty("All")}
           className={`w-[110px] py-0.5 border border-black rounded-lg text-center text-xl

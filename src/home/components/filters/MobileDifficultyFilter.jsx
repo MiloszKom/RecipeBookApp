@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="relative md:hidden">
+    <div className="relative lg:hidden">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         className={`flex justify-between items-center w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] border-2 ${
