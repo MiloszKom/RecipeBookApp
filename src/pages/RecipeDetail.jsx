@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import RecipeTags from "../components/RecipeTags";
 import RecipeMetadata from "../components/RecipeMetadata";
 
@@ -10,9 +12,12 @@ export default function RecipeDetail() {
                    md:grid-cols-[1fr_auto_1fr]"
       >
         <div className="flex gap-2.5 items-center md:gap-[33px]">
-          <button className="px-5 border border-black rounded-xl font-justme text-[32px] whitespace-nowrap">
+          <Link
+            to="/"
+            className="px-5 border border-black rounded-xl font-justme text-[32px] whitespace-nowrap"
+          >
             Go Back
-          </button>
+          </Link>
           <div className="w-full h-[3px] bg-black rounded-2xl" />
         </div>
         <div className="flex items-center px-5">

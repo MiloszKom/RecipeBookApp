@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import RecipeTags from "../../components/RecipeTags";
 import RecipeMetadata from "../../components/RecipeMetadata";
 
 export default function RecpieCard() {
   return (
-    <div className="flex flex-col border border-black rounded-2xl w-full overflow-hidden cursor-pointer">
+    <Link
+      to="recipe/1"
+      className="flex flex-col border border-black rounded-2xl w-full overflow-hidden cursor-pointer"
+    >
       <div
         className="w-fill h-[220px] bg-[url('/placeholder_img.png')] bg-cover bg-center border-b border-black
                    lg:h-[260px]"
@@ -22,6 +27,6 @@ export default function RecpieCard() {
           Easy
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
