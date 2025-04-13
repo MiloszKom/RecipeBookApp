@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RecipeMetadata({ level, servings, cuisine, time }) {
   return (
-    <div className="flex flex-col gap-4 max-w-[400px]">
+    <div className="flex flex-col gap-4 md:max-w-[400px]">
       {level && (
         <div className="flex gap-1 items-center">
           <img src="/level_icon.svg" alt="Level Icon" />
@@ -26,16 +26,16 @@ export default function RecipeMetadata({ level, servings, cuisine, time }) {
           <img src="/cuisine_icon.svg" alt="Cuisine Icon" />
           <span className="text-xl">Cuisine</span>
           <div className="px-5 border border-custom-red text-custom-red rounded-[10px] ml-auto">
-            Italian
+            {cuisine}
           </div>
         </div>
       )}
-      {time && (
+      {time > 0 && (
         <div className="flex gap-1 items-center">
           <img src="/time_icon.svg" alt="Cuisine Icon" />
           <span className="text-xl">Cooking Time</span>
           <div className="px-5 border border-custom-blue text-custom-blue rounded-[10px] ml-auto whitespace-nowrap">
-            30 min
+            {time} min
           </div>
         </div>
       )}

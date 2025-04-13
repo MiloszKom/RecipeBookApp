@@ -1,10 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import RecipeTags from "../components/RecipeTags";
 import RecipeMetadata from "../components/RecipeMetadata";
 
+import { useQuery } from "@tanstack/react-query";
+import { getRecipeById } from "../api/recipesApi";
+
 export default function RecipeDetail() {
+  const { id } = useParams();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["recipe", id],
+    queryFn: getRecipeById,
+  });
+
+  const recipe = data?.data;
+
+  console.log(recipe);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="p-5 md:px-[50px] md:py-[30px]">
       <div
@@ -36,19 +54,20 @@ export default function RecipeDetail() {
                    md:items-center gap-x-[75px] gap-y-[70px] md:mt-[40px]"
       >
         <div
-          className="w-full h-[266px] bg-[url('/placeholder_img.png')] bg-cover bg-center border border-black
+          className="w-full h-[266px] bg-cover bg-center border border-black
                      md:h-[460px]"
+          style={{ backgroundImage: `url('${recipe.image}')` }}
         />
         <div>
-          <RecipeTags tags={["Italian", "Pizza"]} />
+          <RecipeTags tags={recipe.tags} />
           <h1 className="font-justme text-5xl mt-2.5 mb-[30px] md:text-[80px] md:mb-[50px]">
-            Classic Margherita Pizza
+            {recipe.name}
           </h1>
           <RecipeMetadata
-            level={"Medium"}
-            servings={4}
-            cuisine={"Italian"}
-            time={"30 min"}
+            level={recipe.difficulty}
+            servings={recipe.servings}
+            cuisine={recipe.cuisine}
+            time={recipe.cookTimeMinutes}
           />
         </div>
         <div
@@ -59,29 +78,20 @@ export default function RecipeDetail() {
             Ingredients
           </h2>
           <ul className="mt-[15px] list-disc ml-7.5 space-y-2 text-xl font-medium md:text-2xl md:mt-[25px]">
-            <li>Pizza dough</li>
-            <li>Tomato sauce</li>
-            <li>Fresh mozzarella cheese</li>
-            <li>Olive oil</li>
-            <li>Fresh basil leaves</li>
-            <li>Salt and pepper to taste</li>
+            {recipe.ingredients.map((ingredient) => {
+              return <li>{ingredient}</li>;
+            })}
           </ul>
         </div>
 
-        <div className="mx-2.5 md:order-1">
+        <div className="mx-2.5 md:mb-auto md:order-1">
           <h2 className="font-justme text-[40px] md:text-[64px]">
             Instructions
           </h2>
           <ol className="mt-[15px] list-decimal ml-7.5 space-y-2 text-xl font-medium md:text-2xl md:mt-[25px]">
-            <li>Preheat the oven to 475°F (245°C).</li>
-            <li>Roll out the pizza dough and spread tomato sauce evenly</li>
-            <li>Top with slices of fresh mozzarella and fresh basil leaves.</li>
-            <li>Drizzle with olive oil and season with salt and pepper.</li>
-            <li>
-              Bake in the preheated oven for 12-15 minutes or until the crust is
-              golden brown.
-            </li>
-            <li>Slice and serve hot.</li>
+            {recipe.instructions.map((step) => {
+              return <li>{step}</li>;
+            })}
           </ol>
         </div>
       </div>

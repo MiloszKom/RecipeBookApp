@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="relative lg:hidden">
+    <div className="relative z-10 lg:hidden">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className={`flex justify-between items-center w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] border-2 ${
+        className={`flex justify-between bg-white items-center w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] border-2 ${
           menuOpen ? "border-custom-dark-oragne" : "border-black"
         } rounded-xl`}
       >
@@ -19,7 +20,7 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
       </button>
 
       {menuOpen && (
-        <div className="absolute bg-white top-[70px] left-0 border-2 border-custom-dark-oragne rounded-lg overflow-hidden">
+        <div className="absolute bg-white top-[70px] left-0 border-2 border-custom-dark-oragne rounded-lg overflow-hidden cursor-pointer">
           <div
             onClick={() => {
               setDifficulty("Easy");
@@ -47,6 +48,13 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
           >
             Hard
           </div>
+          {createPortal(
+            <div
+              onClick={() => setMenuOpen(false)}
+              className="fixed top-0 w-full h-full"
+            />,
+            document.body
+          )}
         </div>
       )}
     </div>

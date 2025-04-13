@@ -5,8 +5,34 @@ import SearchBar from "../features/home/SearchBar";
 import RecpieCard from "../features/home/RecipeCard";
 import ResponsiveDifficultyFilter from "../features/home/ResponsiveDifficultyFilter";
 
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { getRecipes } from "../api/recipesApi";
+
 export default function Home() {
   const [difficulty, setDifficulty] = useState("All");
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["recipes"],
+    queryFn: getRecipes,
+    getNextPageParam: (lastPage, allPages) => {
+      const total = lastPage.data.total;
+      const fetched = allPages.length * 6;
+      return fetched < total ? fetched : undefined;
+    },
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error: {error.message}</p>;
+
+  const recipes = data.pages.flatMap((page) => page.data.recipes) || [];
 
   return (
     <div>
@@ -32,15 +58,14 @@ export default function Home() {
                    sm:grid-cols-2 sm:gap-x-7
                    lg:grid-cols-3"
         >
-          <RecpieCard />
-          <RecpieCard />
-          <RecpieCard />
-          <RecpieCard />
-          <RecpieCard />
-          <RecpieCard />
+          {recipes.map((recipe) => (
+            <RecpieCard key={recipe.id} recipe={recipe} />
+          ))}
         </div>
 
         <button
+          onClick={() => fetchNextPage()}
+          disabled={!hasNextPage || isFetchingNextPage}
           className="max-w-[180px] mx-auto mt-10 px-10 py-0.5 border border-black rounded-xl text-[32px] font-justme
                    hover:shadow-[0_0_10px_0_rgba(255,165,0,0.7)] transition-shadow duration-200"
         >

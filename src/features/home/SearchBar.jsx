@@ -8,7 +8,7 @@ export default function SearchBar() {
                 hover:shadow-[0_0_10px_0_rgba(255,165,0,0.7)] transition-shadow duration-200"
     >
       <img src="/loupe.svg" alt="Search Icon" />
-      <input type="text" class="w-full outline-none" />
+      <input type="text" className="w-full outline-none" />
     </div>
   );
 }
