@@ -20,6 +20,12 @@
   --color-custom-dark-oragne: #c65f00;
 }
 
+@layer utilities {
+  .disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+}
+
 html {
   font-family: "Nunito Sans", sans-serif;
   user-select: none;
