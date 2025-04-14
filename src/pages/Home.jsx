@@ -10,9 +10,11 @@ import RecipeCardSkeleton from "../components/RecipeCardSkeleton";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getRecipes } from "../api/recipesApi";
 import ErrorMesasge from "../components/ErrorMessage";
+import LoadMoreButton from "../features/home/LoadMoreButton";
 
 export default function Home() {
   const [difficulty, setDifficulty] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const {
     data,
@@ -23,7 +25,7 @@ export default function Home() {
     fetchNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["recipes"],
+    queryKey: ["recipes", { searchTerm }],
     queryFn: getRecipes,
     getNextPageParam: (lastPage, allPages) => {
       const total = lastPage.data.total;
@@ -33,6 +35,11 @@ export default function Home() {
   });
 
   const recipes = data?.pages.flatMap((page) => page.data.recipes) || [];
+
+  const filteredRecipes =
+    difficulty === "All"
+      ? recipes
+      : recipes.filter((recipe) => recipe.difficulty === difficulty);
 
   return (
     <div>
@@ -46,7 +53,7 @@ export default function Home() {
           className="flex flex-col gap-10 lg:flex-row 
                    lg:justify-between lg:items-center"
         >
-          <SearchBar />
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <ResponsiveDifficultyFilter
             difficulty={difficulty}
             setDifficulty={setDifficulty}
@@ -64,9 +71,9 @@ export default function Home() {
             Array.from({ length: 6 }).map((_, index) => (
               <RecipeCardSkeleton key={`skeleton-${index}`} />
             ))
-          ) : (
+          ) : filteredRecipes.length > 0 ? (
             <>
-              {recipes.map((recipe) => (
+              {filteredRecipes.map((recipe) => (
                 <RecipeCard key={recipe.id} recipe={recipe} />
               ))}
               {isFetchingNextPage &&
@@ -74,19 +81,19 @@ export default function Home() {
                   <RecipeCardSkeleton key={`pagination-skeleton-${index}`} />
                 ))}
             </>
+          ) : (
+            <p className="text-center text-xl font-semibold text-gray-600 mt-10 col-span-full">
+              No recipes found.
+            </p>
           )}
         </div>
 
         {hasNextPage && (
-          <button
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
-            className={`max-w-[180px] mx-auto mt-10 px-10 py-0.5 border border-black rounded-xl text-[32px] font-justme
-              hover:shadow-[0_0_10px_0_rgba(255,165,0,0.7)] transition-shadow duration-200
-              ${isLoading || isFetchingNextPage ? "disabled" : ""}`}
-          >
-            {isLoading || isFetchingNextPage ? "Loading..." : "Load More"}
-          </button>
+          <LoadMoreButton
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            isLoading={isLoading}
+          />
         )}
       </div>
     </div>

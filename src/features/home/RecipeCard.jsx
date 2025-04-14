@@ -4,6 +4,24 @@ import { Link } from "react-router-dom";
 import RecipeTags from "../../components/RecipeTags";
 import RecipeMetadata from "../../components/RecipeMetadata";
 
+const difficultyColorMap = {
+  Easy: {
+    border: "border-custom-green",
+    bg: "bg-custom-light-green",
+    text: "text-custom-green",
+  },
+  Medium: {
+    border: "border-custom-orange",
+    bg: "bg-custom-light-orange",
+    text: "text-custom-orange",
+  },
+  Hard: {
+    border: "border-custom-red",
+    bg: "bg-custom-light-red",
+    text: "text-custom-red",
+  },
+};
+
 export default function RecpieCard({ recipe, index }) {
   return (
     <Link
@@ -30,8 +48,10 @@ export default function RecpieCard({ recipe, index }) {
           time={recipe.cookTimeMinutes}
         />
         <div
-          className="w-fit px-5 py-1 border border-custom-green bg-custom-light-green text-custom-green rounded-xl mt-6 
-                     lg:mt-10"
+          className={`w-fit px-5 py-1 border rounded-xl mt-6 lg:mt-10 
+          ${difficultyColorMap[recipe.difficulty].border}
+          ${difficultyColorMap[recipe.difficulty].bg}
+          ${difficultyColorMap[recipe.difficulty].text}`}
         >
           {recipe.difficulty}
         </div>
