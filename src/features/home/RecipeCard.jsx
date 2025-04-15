@@ -22,7 +22,7 @@ const difficultyColorMap = {
   },
 };
 
-export default function RecpieCard({ recipe, index }) {
+export default function RecpieCard({ recipe }) {
   return (
     <Link
       to={`recipe/${recipe.id}`}
@@ -33,7 +33,6 @@ export default function RecpieCard({ recipe, index }) {
           src={recipe.image}
           alt={recipe.name}
           className="w-full h-full object-cover transition-opacity duration-300 opacity-0"
-          style={{ transitionDelay: `${(index % 6) * 50}ms` }}
           onLoad={(e) => e.currentTarget.classList.add("opacity-100")}
           loading="lazy"
         />

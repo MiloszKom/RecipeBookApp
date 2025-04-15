@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import Header from "../features/home/Header";
 import SearchBar from "../features/home/SearchBar";
@@ -12,9 +12,26 @@ import { getRecipes } from "../api/recipesApi";
 import ErrorMesasge from "../components/ErrorMessage";
 import LoadMoreButton from "../features/home/LoadMoreButton";
 
+import useScrollPosition from "../hooks/useScrollPosition";
+
+import { useSelector, useDispatch } from "react-redux";
+import { setFilter, setTerm } from "../store";
+
 export default function Home() {
-  const [difficulty, setDifficulty] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
+  const chosenFilter = useSelector((store) => store.chosenFilter);
+  const chosenTerm = useSelector((store) => store.chosenTerm);
+  const dispatch = useDispatch();
+
+  const [difficulty, setDifficulty] = useState(chosenFilter || "All");
+  const [searchTerm, setSearchTerm] = useState(chosenTerm || "");
+
+  useEffect(() => {
+    dispatch(setFilter(difficulty));
+  }, [difficulty, dispatch]);
+
+  useEffect(() => {
+    dispatch(setTerm(searchTerm));
+  }, [searchTerm, dispatch]);
 
   const {
     data,
@@ -41,13 +58,16 @@ export default function Home() {
       ? recipes
       : recipes.filter((recipe) => recipe.difficulty === difficulty);
 
+  const scrollableDiv = useRef(null);
+  useScrollPosition(scrollableDiv);
+
   return (
-    <div>
+    <div ref={scrollableDiv} className="overflow-x-auto max-h-screen">
       <Header />
       <div
         className="flex justify-self-center w-full gap-10 flex-col mt-10 px-[30px] mb-12 max-w-[500px]
                  sm:max-w-[850px]
-                 lg:mt-[55px] lg:mx-15 lg:gap-15 lg:max-w-[1440px]"
+                 lg:mt-[55px] lg:gap-15 lg:max-w-[1440px]"
       >
         <div
           className="flex flex-col gap-10 lg:flex-row 

@@ -79,8 +79,8 @@ export default function RecipeDetail() {
               Ingredients
             </h2>
             <ul className="mt-[15px] list-disc ml-7.5 space-y-2 text-xl font-medium md:text-2xl md:mt-[25px]">
-              {recipe.ingredients.map((ingredient) => {
-                return <li>{ingredient}</li>;
+              {recipe.ingredients.map((ingredient, index) => {
+                return <li key={index}>{ingredient}</li>;
               })}
             </ul>
           </div>
@@ -90,8 +90,8 @@ export default function RecipeDetail() {
               Instructions
             </h2>
             <ol className="mt-[15px] list-decimal ml-7.5 space-y-2 text-xl font-medium md:text-2xl md:mt-[25px]">
-              {recipe.instructions.map((step) => {
-                return <li>{step}</li>;
+              {recipe.instructions.map((step, index) => {
+                return <li key={index}>{step}</li>;
               })}
             </ol>
           </div>
