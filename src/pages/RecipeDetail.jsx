@@ -20,9 +20,9 @@ export default function RecipeDetail() {
   const recipe = data?.data;
 
   return (
-    <div className="p-5 md:px-[50px] md:py-[30px]">
+    <div className="py-5 md:py-[30px]">
       <div
-        className="grid grid-cols-[1fr_auto] items-center gap-2.5
+        className="grid grid-cols-[1fr_auto] items-center gap-2.5 px-5 md:px-[0px] md:pl-[50px]
                    md:grid-cols-[1fr_auto_1fr]"
       >
         <div className="flex gap-2.5 items-center md:gap-[33px]">
@@ -51,7 +51,7 @@ export default function RecipeDetail() {
         <RecipeDetailSkeleton />
       ) : (
         <div
-          className="grid gap-10 mt-[30px] md:grid-cols-2 
+          className="grid gap-10 mt-[30px] md:grid-cols-2 px-5 md:px-[50px]
                    md:items-center gap-x-[75px] gap-y-[70px] md:mt-[40px]"
         >
           <div

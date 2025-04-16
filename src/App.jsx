@@ -9,11 +9,10 @@ import RecipeDetail from "./pages/RecipeDetail";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/RecipeBookApp">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
