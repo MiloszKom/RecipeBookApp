@@ -7,7 +7,7 @@ import { throttle } from "lodash";
 const useScrollPosition = (divRef) => {
   const scrollTopRef = useRef(0);
   const dispatch = useDispatch();
-  const scrolledHeight = useSelector((store) => store.scrolledHeight);
+  const scrolledHeight = useSelector((store) => store.ui.scrolledHeight);
 
   useEffect(() => {
     const handleScroll = throttle(() => {

@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   scrolledHeight: 0,
@@ -6,43 +6,28 @@ const initialState = {
   chosenTerm: "",
 };
 
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "height/set":
-      return {
-        ...state,
-        scrolledHeight: action.payload,
-      };
-    case "filter/set":
-      return {
-        ...state,
-        chosenFilter: action.payload,
-      };
-    case "term/set":
-      return {
-        ...state,
-        chosenTerm: action.payload,
-      };
-    default:
-      return state;
-  }
-}
-
-export const setHeight = (height) => ({
-  type: "height/set",
-  payload: height,
+const uiSlice = createSlice({
+  name: "ui",
+  initialState,
+  reducers: {
+    setHeight: (state, action) => {
+      state.scrolledHeight = action.payload;
+    },
+    setFilter: (state, action) => {
+      state.chosenFilter = action.payload;
+    },
+    setTerm: (state, action) => {
+      state.chosenTerm = action.payload;
+    },
+  },
 });
 
-export const setFilter = (option) => ({
-  type: "filter/set",
-  payload: option,
-});
+export const { setHeight, setFilter, setTerm } = uiSlice.actions;
 
-export const setTerm = (term) => ({
-  type: "term/set",
-  payload: term,
+const store = configureStore({
+  reducer: {
+    ui: uiSlice.reducer,
+  },
 });
-
-const store = createStore(reducer);
 
 export default store;

@@ -18,8 +18,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setFilter, setTerm } from "../store";
 
 export default function Home() {
-  const chosenFilter = useSelector((store) => store.chosenFilter);
-  const chosenTerm = useSelector((store) => store.chosenTerm);
+  const chosenFilter = useSelector((store) => store.ui.chosenFilter);
+  const chosenTerm = useSelector((store) => store.ui.chosenTerm);
   const dispatch = useDispatch();
 
   const [difficulty, setDifficulty] = useState(chosenFilter || "All");
