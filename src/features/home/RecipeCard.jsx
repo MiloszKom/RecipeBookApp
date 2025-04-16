@@ -10,6 +10,9 @@ export default function RecpieCard({ recipe }) {
   return (
     <Link
       to={`recipe/${recipe.id}`}
+      onClick={() =>
+        sessionStorage.setItem("scrollPosition", window.pageYOffset)
+      }
       className="flex flex-col border border-black rounded-2xl w-full overflow-hidden cursor-pointer"
     >
       <div className="w-full h-[220px] lg:h-[260px] border-b border-black overflow-hidden">

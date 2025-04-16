@@ -9,6 +9,7 @@ import { getRecipeById } from "../api/recipesApi";
 import ErrorMesasge from "../components/ErrorMessage";
 
 export default function RecipeDetail() {
+  window.scrollTo(0, 0);
   const { id } = useParams();
 
   const { data, isLoading, isError, error } = useQuery({

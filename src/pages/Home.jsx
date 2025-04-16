@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "../features/home/Header";
 import SearchBar from "../features/home/SearchBar";
@@ -17,6 +17,8 @@ import useScrollPosition from "../hooks/useScrollPosition";
 import { useSelector, useDispatch } from "react-redux";
 import { setFilter, setTerm } from "../store";
 
+const MemoizedRecipeCard = React.memo(RecipeCard);
+
 export default function Home() {
   const chosenFilter = useSelector((store) => store.ui.chosenFilter);
   const chosenTerm = useSelector((store) => store.ui.chosenTerm);
@@ -24,6 +26,8 @@ export default function Home() {
 
   const [difficulty, setDifficulty] = useState(chosenFilter || "All");
   const [searchTerm, setSearchTerm] = useState(chosenTerm || "");
+
+  useScrollPosition();
 
   useEffect(() => {
     dispatch(setFilter(difficulty));
@@ -58,11 +62,8 @@ export default function Home() {
       ? recipes
       : recipes.filter((recipe) => recipe.difficulty === difficulty);
 
-  const scrollableDiv = useRef(null);
-  useScrollPosition(scrollableDiv);
-
   return (
-    <div ref={scrollableDiv} className="overflow-x-auto max-h-screen">
+    <div>
       <Header />
       <div
         className="flex justify-self-center w-full gap-10 flex-col mt-10 px-[30px] mb-12 max-w-[500px]
@@ -94,7 +95,7 @@ export default function Home() {
           ) : filteredRecipes.length > 0 ? (
             <>
               {filteredRecipes.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
+                <MemoizedRecipeCard key={recipe.id} recipe={recipe} />
               ))}
               {isFetchingNextPage &&
                 Array.from({ length: 6 }).map((_, index) => (

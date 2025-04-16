@@ -1,37 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { setHeight } from "../store";
-import { throttle } from "lodash";
-
-const useScrollPosition = (divRef) => {
-  const scrollTopRef = useRef(0);
-  const dispatch = useDispatch();
-  const scrolledHeight = useSelector((store) => store.ui.scrolledHeight);
-
+const useScrollPosition = () => {
   useEffect(() => {
-    const handleScroll = throttle(() => {
-      if (divRef.current) {
-        scrollTopRef.current = divRef.current.scrollTop;
-        dispatch(setHeight(scrollTopRef.current));
-      }
-    }, 200);
-
-    const div = divRef.current;
-
-    if (div) {
-      div.scrollTop = scrolledHeight;
-      div.addEventListener("scroll", handleScroll);
+    const scrollPosition = sessionStorage.getItem("scrollPosition");
+    if (scrollPosition) {
+      window.scrollTo(0, parseInt(scrollPosition, 10));
+      sessionStorage.removeItem("scrollPosition");
     }
-
-    return () => {
-      if (div) {
-        div.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [divRef, dispatch, scrolledHeight]);
-
-  return scrollTopRef;
+  }, []);
 };
 
 export default useScrollPosition;
