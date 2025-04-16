@@ -36,7 +36,7 @@ export default function RecipeDetail() {
         </div>
         <div className="flex items-center px-5">
           <img
-            src="/bowl_dark.svg"
+            src="/RecipeBookApp/bowl_dark.svg"
             alt="Bowl Icon"
             className="md:w-[80px] md:h-[80px]"
           />
