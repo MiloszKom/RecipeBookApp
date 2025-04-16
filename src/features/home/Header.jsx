@@ -13,7 +13,12 @@ export default function Header() {
           alt="Bowl Icon"
           className="inline mr-2.5 lg:w-[80px] lg:h-[92px]"
         />
-        <p className="font-justme text-5xl lg:text-8xl">Recipe Book</p>
+        <p
+          className="font-justme text-5xl lg:text-8xl"
+          data-test="fundamentals-header"
+        >
+          Recipe Book
+        </p>
       </div>
       <div className="w-full h-0.75 bg-white rounded-l-full" />
     </header>

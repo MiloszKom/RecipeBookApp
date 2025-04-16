@@ -1,9 +1,8 @@
-import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 import RecipeTags from "../components/RecipeTags";
 import RecipeMetadata from "../components/RecipeMetadata";
-import RecipeDetailSkeleton from "../components/RecipeDetailSkeleton";
+import RecipeDetailSkeleton from "../features/recipeDetail/RecipeDetailSkeleton";
 
 import { useQuery } from "@tanstack/react-query";
 import { getRecipeById } from "../api/recipesApi";

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setHeight } from "../store";
-import throttle from "lodash.throttle";
+import { throttle } from "lodash";
 
 const useScrollPosition = (divRef) => {
   const scrollTopRef = useRef(0);

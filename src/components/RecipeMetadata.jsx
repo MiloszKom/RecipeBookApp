@@ -1,5 +1,7 @@
 import React from "react";
 
+import { getStyleByDifficulty } from "../utils/styleHelpers";
+
 export default function RecipeMetadata({ level, servings, cuisine, time }) {
   return (
     <div className="flex flex-col gap-4 md:max-w-[400px]">
@@ -7,7 +9,11 @@ export default function RecipeMetadata({ level, servings, cuisine, time }) {
         <div className="flex gap-1 items-center">
           <img src="/level_icon.svg" alt="Level Icon" />
           <span className="text-xl">Level</span>
-          <div className="px-5 bg-custom-light-orange border border-custom-orange text-custom-orange rounded-[10px] ml-auto">
+          <div
+            className={`px-5 border rounded-[10px] ml-auto ${getStyleByDifficulty(
+              level
+            )}`}
+          >
             {level}
           </div>
         </div>

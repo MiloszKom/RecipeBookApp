@@ -11,6 +11,7 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
             className={`flex justify-between bg-white items-center w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] border-2 ${
               menuOpen ? "border-custom-dark-oragne" : "border-black"
             } rounded-xl`}
+            data-test="mobile-dropdown-btn"
           >
             <span>{difficulty}</span>
             <img
@@ -27,6 +28,7 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
                   close();
                 }}
                 className="w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] hover:bg-custom-light-green hover:text-custom-green"
+                data-test="mobile-dropdown-option"
               >
                 Easy
               </div>
@@ -36,6 +38,7 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
                   close();
                 }}
                 className="w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] hover:bg-custom-light-orange hover:text-custom-orange"
+                data-test="mobile-dropdown-option"
               >
                 Medium
               </div>
@@ -45,6 +48,7 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
                   close();
                 }}
                 className="w-[200px] px-5 py-1.5 text-10 font-justme text-[32px] hover:bg-custom-light-red hover:text-custom-red"
+                data-test="mobile-dropdown-option"
               >
                 Hard
               </div>

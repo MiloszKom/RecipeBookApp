@@ -5,7 +5,7 @@ import SearchBar from "../features/home/SearchBar";
 import RecipeCard from "../features/home/RecipeCard";
 import ResponsiveDifficultyFilter from "../features/home/ResponsiveDifficultyFilter";
 
-import RecipeCardSkeleton from "../components/RecipeCardSkeleton";
+import RecipeCardSkeleton from "../features/home/RecipeCardSkeleton";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getRecipes } from "../api/recipesApi";
