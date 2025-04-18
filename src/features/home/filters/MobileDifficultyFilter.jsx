@@ -15,11 +15,7 @@ export default function MobileDifficultyFilter({ difficulty, setDifficulty }) {
           >
             <span>{difficulty}</span>
             <img
-              src={
-                menuOpen
-                  ? "/RecipeBookApp/arrow_up.svg"
-                  : "/RecipeBookApp/arrow_down.svg"
-              }
+              src={menuOpen ? "/arrow_up.svg" : "/arrow_down.svg"}
               alt="Arrow"
             />
           </button>
