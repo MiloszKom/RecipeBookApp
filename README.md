@@ -19,7 +19,7 @@ A recipe book app built with **React** and **TailwindCSS**. Users can browse, se
 
    ```bash
    git clone https://github.com/MiloszKom/RecipeBookApp.git
-   cd recipe-book-app
+   cd RecipeBookApp
 
 2. **Install dependencies:**
    
