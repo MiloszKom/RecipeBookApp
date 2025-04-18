@@ -4,7 +4,7 @@ A recipe book app built with **React** and **TailwindCSS**. Users can browse, se
 
 ## 🚀 Live Demo
 
-🔗 [View Demo](https://miloszkom.github.io/RecipeBookApp)
+🔗 [View Demo](https://recipe-book-ap.netlify.app/)
 
 ## 🛠 Technologies Used
 
