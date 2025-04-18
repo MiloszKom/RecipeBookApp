@@ -8,7 +8,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
             hover:shadow-[0_0_10px_0_rgba(255,165,0,0.7)]
             focus-within:shadow-[0_0_10px_0_rgba(255,165,0,0.7)] transition-shadow duration-200"
     >
-      <img src="/RecipeBookApp/loupe.svg" alt="Search Icon" />
+      <img src="/loupe.svg" alt="Search Icon" />
       <input
         type="text"
         className="w-full outline-none"

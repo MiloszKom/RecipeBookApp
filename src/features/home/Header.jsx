@@ -9,7 +9,7 @@ export default function Header() {
       <div className="w-full h-0.75 bg-white rounded-r-full" />
       <div className="flex items-center justify-center whitespace-nowrap lg:pl-5">
         <img
-          src="/RecipeBookApp/bowl.svg"
+          src="/bowl.svg"
           alt="Bowl Icon"
           className="inline mr-2.5 lg:w-[80px] lg:h-[92px]"
         />

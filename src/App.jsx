@@ -9,7 +9,7 @@ import RecipeDetail from "./pages/RecipeDetail";
 
 function App() {
   return (
-    <Router basename="/RecipeBookApp">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />

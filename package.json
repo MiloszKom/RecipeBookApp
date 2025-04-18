@@ -1,6 +1,5 @@
 {
   "name": "recipebookapp",
-  "homepage": "https://miloszkom.github.io/RecipeBookApp/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,8 +8,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
@@ -19,7 +16,6 @@
     "@tailwindcss/vite": "^4.1.3",
     "@tanstack/react-query": "^5.73.3",
     "axios": "^1.8.4",
-    "gh-pages": "^6.3.0",
     "lodash": "^4.17.21",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
