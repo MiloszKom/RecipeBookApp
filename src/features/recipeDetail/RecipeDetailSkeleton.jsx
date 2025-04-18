@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RecipeDetailSkeleton() {
   return (
-    <div className="animate-pulse">
+    <div className="animate-pulse px-5 md:px-[50px]">
       <div className="grid gap-10 mt-[30px] md:grid-cols-2 md:items-center gap-x-[75px] gap-y-[70px] md:mt-[40px]">
         <div className="w-full h-[266px] bg-gray-200 border border-gray-300 md:h-[460px]"></div>
         <div>
